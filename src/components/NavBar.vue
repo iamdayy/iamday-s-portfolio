@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/vue/24/outline';
+import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
+import { mdiMenu, mdiBellOutline, mdiClose } from "@mdi/js";
+import SvgIcon from "@jamescoyle/vue-icon";
 import { ref } from 'vue';
 
 const opened = ref<boolean>(false);
@@ -13,7 +14,7 @@ const navigation = [
 ]
 </script>
 <template>
-    <Disclosure as="nav" class="bg-gray-500 border bg-opacity-25 backdrop-blur-sm border-gray-50 border-opacity-30 shadow-md shadow-slate-950 w-11/12 rounded-full mx-auto mt-2" v-slot="{ open }" :class="opened ? 'rounded-none' : 'rounded-full'" >
+    <Disclosure as="nav" class="bg-gray-500 border bg-opacity-25 backdrop-blur-sm border-gray-50 border-opacity-30 shadow-md shadow-slate-950 w-11/12 rounded-full mx-auto mt-2" v-slot="{ open }" :class="opened ? 'rounded-none absolute w-full top-0 right-0 left-0 mt-0' : 'rounded-full'" >
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="flex h-16 items-center justify-between">
           <div class="flex items-center">
@@ -36,7 +37,7 @@ const navigation = [
               <button type="button" class="relative rounded-full p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                 <span class="absolute -inset-1.5" />
                 <span class="sr-only">View notifications</span>
-                <BellIcon class="h-6 w-6" aria-hidden="true" />
+                <SvgIcon type="mdi" class="h-6 w-6" aria-hidden="true" :path="mdiBellOutline" />
               </button>
             </div>
           </div>
@@ -45,8 +46,9 @@ const navigation = [
             <DisclosureButton @click="opened = !opened" class="relative inline-flex items-center justify-center rounded-full p-2 text-gray-400 hover:text-white focus:outline-none focus:ring-1 focus:ring-white">
               <span class="absolute -inset-0.5" />
               <span class="sr-only">Open main menu</span>
-              <Bars3Icon v-if="!open" class="block h-6 w-6" aria-hidden="true" />
-              <XMarkIcon v-else class="block h-6 w-6" aria-hidden="true" />
+              
+              <SvgIcon type="mdi" :path="mdiMenu" v-if="!open" class="block h-6 w-6" aria-hidden="true" />
+              <SvgIcon type="mdi" :path="mdiClose" v-else class="block h-6 w-6" aria-hidden="true" />
             </DisclosureButton>
           </div>
         </div>

@@ -1,30 +1,29 @@
 <script setup lang="ts">
+import Card from './components/Card.vue';
+import Footer from './components/Footer.vue';
+import Jumbotron from './components/Jumbotron.vue';
 import NavBar from './components/NavBar.vue';
+import Aos from "aos";
+import Contact from "./components/Contact.vue";
+Aos.init();
 </script>
 
 <template>
-  <div class="min-h-full">
-    <div class="grid gap-2 p-2 background shadow-md">
+  <div class="min-h-full snap-start">
+    <div class="grid gap-2 background shadow-md overflow-hidden">
       <NavBar />
-      <header class="shadow">
-        <div class="border border-slate-500 rounded-2xl mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-          <div class="flex flex-wrap justify-around">
-            <img src="./assets/person.png" alt="i'am" class="max-w-md" />
-            <div class="bg-gray-600 bg-opacity-25 backdrop-blur-sm shadow-slate-900 shadow-inner rounded-xl max-w-2xl break-words p-3">
-              <h1 class="font-bold text-3xl md:text-5xl">Hello</h1>
-              <h2 class="text-5xl md:text-7xl font-semibold">I'am Dayyan Sauqy</h2>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, nostrum? Recusandae optio ipsa, possimus et quidem amet repudiandae voluptates quos, eligendi adipisci blanditiis earum consectetur quia nobis! Dicta, voluptate voluptas.</p>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Jumbotron />
     </div>
-    <main>
-      <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
-        <!-- Your content -->
-      </div>
-    </main>
   </div>
+  <main>
+    <div class="w-full py-6 sm:px-6 lg:px-8 snap-center h-screen" data-aos="fade-zoom-in" data-aos-duration="1000" data-aos-easing="ease-in-sine" data-aos-offset="200" data-aos-delay="600">
+      <Card />
+    </div>
+    <div class="w-full p-4 h-screen snap-center">
+      <Contact />
+    </div>
+  </main>
+  <Footer />
 </template>
 
 <style scoped>

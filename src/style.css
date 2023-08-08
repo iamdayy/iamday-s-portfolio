@@ -16,6 +16,10 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  scroll-snap-type: proximity;
+  /* scroll-snap-points-y: repeat(100vh); */
+  scroll-snap-type: y proximity;
 }
 .background {
   background-image: url('./assets/Polygon Luminary.svg');
