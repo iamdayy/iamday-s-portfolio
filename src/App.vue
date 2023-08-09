@@ -15,11 +15,11 @@ Aos.init();
       <Jumbotron />
     </div>
   </div>
-  <main>
-    <div class="w-full py-6 sm:px-6 lg:px-8 snap-center h-screen" data-aos="fade-zoom-in" data-aos-duration="1000" data-aos-easing="ease-in-sine" data-aos-offset="200" data-aos-delay="600">
+  <main class="bg-indigo-500 dark:bg-slate-700 ">
+    <div class="w-full py-6 sm:px-6 lg:px-8 snap-center min-h-screen" data-aos="fade-zoom-in" data-aos-duration="1000" data-aos-easing="ease-in-sine" data-aos-offset="200" data-aos-delay="600">
       <Card />
     </div>
-    <div class="w-full p-4 h-screen snap-center">
+    <div class="w-full py-6 sm:px-6 lg:px-8 min-h-screen snap-center  bg-[url('./assets/WorldMap.svg')] bg-opacity-20 bg-cover bg-center">
       <Contact />
     </div>
   </main>
