@@ -12,6 +12,7 @@
     "@headlessui/vue": "^1.7.15",
     "@jamescoyle/vue-icon": "^0.1.2",
     "@mdi/js": "^7.2.96",
+    "postcss-nesting": "^12.0.1",
     "vue": "^3.3.4"
   },
   "devDependencies": {

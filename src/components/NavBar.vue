@@ -3,14 +3,28 @@ import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
 import { mdiMenu, mdiBellOutline, mdiClose } from "@mdi/js";
 import SvgIcon from "@jamescoyle/vue-icon";
 import { ref } from 'vue';
-
+import type { Navigation } from '../types';
+let hash = ref<string>('#');
+const setPage = () => {
+  setTimeout(() => {
+    if (!window.location.hash) {
+      hash.value = '#';
+    } else {
+      hash.value = window.location.hash;
+    }
+  }, 100)
+}
 const opened = ref<boolean>(false);
-const navigation = [
-  { name: 'Dashboard', href: '#', current: true },
-  { name: 'Team', href: '#', current: false },
-  { name: 'Projects', href: '#', current: false },
-  { name: 'Calendar', href: '#', current: false },
-  { name: 'Reports', href: '#', current: false },
+const navigation: Navigation[] = [
+  { name: 'Home', href: '#' },
+  {
+    name: 'About me',
+    href: '#me',
+  },
+  {
+    name: 'Contact',
+    href: '#contact',
+  }
 ]
 </script>
 <template>
@@ -23,7 +37,7 @@ const navigation = [
             </div>
             <div class="hidden md:block">
               <div class="ml-10 flex items-baseline space-x-4">
-                <a v-for="item in navigation" :key="item.name" :href="item.href" :class="[item.current ? 'text-green-500 border border-green-500 hover:cursor-default font-bold' : 'text-gray-300 hover:border hover:border-slate-500 hover:text-slate', 'rounded-md px-3 py-2 text-sm font-medium']" :aria-current="item.current ? 'page' : undefined">{{ item.name }}</a>
+                <a v-for="item in navigation" :key="item.name" :href="item.href" :class="[item.href == hash ? 'text-green-500 border border-green-500 hover:cursor-default font-bold' : 'text-gray-300 hover:border hover:border-slate-500 hover:text-slate', 'rounded-md px-3 py-2 text-sm font-medium']" :aria-current="item.href == hash ? 'page' : undefined" @click="setPage">{{ item.name }}</a>
               </div>
             </div>
           </div>
@@ -56,7 +70,7 @@ const navigation = [
 
       <DisclosurePanel class="md:hidden">
         <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
-          <DisclosureButton v-for="item in navigation" :key="item.name" as="a" :href="item.href" :class="[item.current ? 'text-green-500 border border-green-500 hover:cursor-default font-bold' : 'text-gray-300 hover:border hover:border-slate-500 hover:text-slate', 'block rounded-md px-3 py-2 text-base font-medium']" :aria-current="item.current ? 'page' : undefined">{{ item.name }}</DisclosureButton>
+          <DisclosureButton v-for="item in navigation" :key="item.name" as="a" :href="item.href" :class="[item.href == hash ? 'text-green-500 border border-green-500 hover:cursor-default font-bold' : 'text-gray-300 hover:border hover:border-slate-500 hover:text-slate', 'block rounded-md px-3 py-2 text-base font-medium']" :aria-current="item.href == hash ? 'page' : undefined">{{ item.name }}</DisclosureButton>
         </div>
         <div class="border-t border-gray-700 pb-3 pt-4">
           <div class="flex items-center px-5">
